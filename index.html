@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KMGVIP | Kitaake Mutagenesis Genomic Variant Information Platform</title>
+
+    <meta name="description"
+          content="KMGVIP - Kitaake Mutagenesis Genomic Variant Information Platform">
+
+    <style>
+        :root{
+            --blue:#174a72;
+            --blue-dark:#123b5b;
+            --text:#3f4b54;
+            --muted:#7b8790;
+            --line:#e5e9ed;
+            --bg:#eef2f5;
+            --white:#ffffff;
+        }
+
+        *{
+            box-sizing:border-box;
+        }
+
+        html,body{
+            margin:0;
+            min-height:100%;
+        }
+
+        body{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:32px 20px;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Helvetica Neue",
+                Arial,
+                sans-serif;
+
+            background:var(--bg);
+            color:var(--text);
+        }
+
+        .wrap{
+            width:100%;
+            max-width:860px;
+        }
+
+        .panel{
+            background:var(--white);
+            border:1px solid #dde3e8;
+            border-radius:10px;
+            box-shadow:0 16px 42px rgba(34,50,66,.07);
+            overflow:hidden;
+        }
+
+        .topline{
+            height:4px;
+            background:var(--blue);
+        }
+
+        .header{
+            padding:34px 42px 30px;
+        }
+
+        .title{
+            margin:0;
+            color:var(--blue);
+            font-size:42px;
+            font-weight:700;
+            line-height:1;
+            letter-spacing:-0.8px;
+        }
+
+        .subtitle{
+            margin-top:11px;
+            color:#5d6972;
+            font-size:18px;
+            line-height:1.5;
+        }
+
+        .divider{
+            height:1px;
+            background:var(--line);
+            margin:0 42px;
+        }
+
+        .notice{
+            position:relative;
+            padding:30px 42px 30px 58px;
+        }
+
+        .notice::before{
+            content:"";
+            position:absolute;
+            left:42px;
+            top:31px;
+            bottom:31px;
+            width:3px;
+            border-radius:3px;
+            background:var(--blue);
+        }
+
+        .section-label{
+            margin-bottom:14px;
+            color:var(--blue);
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:.15px;
+        }
+
+        .notice p{
+            margin:0;
+            color:var(--text);
+            font-size:18px;
+            line-height:1.82;
+            text-align:justify;
+            text-justify:inter-word;
+            hyphens:auto;
+        }
+
+        .notice p + p{
+            margin-top:12px;
+        }
+
+        .access{
+            margin:0 42px 34px;
+            padding:23px 0 0;
+            border-top:1px solid var(--line);
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:28px;
+        }
+
+        .access-copy{
+            min-width:0;
+        }
+
+        .access-eyebrow{
+            margin-bottom:4px;
+            color:var(--muted);
+            font-size:11px;
+            font-weight:700;
+            letter-spacing:1px;
+            text-transform:uppercase;
+        }
+
+        .access-title{
+            margin:0;
+            color:#35434d;
+            font-size:17px;
+            line-height:1.45;
+            font-weight:650;
+        }
+
+        .access-note{
+            margin-top:4px;
+            color:#8a949b;
+            font-size:13px;
+            line-height:1.5;
+        }
+
+        .button{
+            flex:0 0 auto;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+
+            min-width:156px;
+            padding:12px 20px;
+
+            background:var(--blue);
+            color:#fff;
+            border-radius:5px;
+
+            text-decoration:none;
+            font-size:14px;
+            font-weight:650;
+
+            transition:
+                background .18s ease,
+                transform .18s ease,
+                box-shadow .18s ease;
+        }
+
+        .button:hover{
+            background:var(--blue-dark);
+            transform:translateY(-1px);
+            box-shadow:0 7px 18px rgba(23,74,114,.16);
+        }
+
+        .footer{
+            padding:15px 42px 17px;
+            background:#fafbfc;
+            border-top:1px solid var(--line);
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+
+            color:#8b959c;
+            font-size:12px;
+            line-height:1.5;
+        }
+
+        .footer-right{
+            white-space:nowrap;
+        }
+
+        @media (max-width:700px){
+            body{
+                align-items:flex-start;
+                padding:14px 10px;
+            }
+
+            .header{
+                padding:28px 24px 24px;
+            }
+
+            .title{
+                font-size:35px;
+            }
+
+            .subtitle{
+                font-size:16px;
+            }
+
+            .divider{
+                margin:0 24px;
+            }
+
+            .notice{
+                padding:25px 24px 26px 38px;
+            }
+
+            .notice::before{
+                left:24px;
+                top:26px;
+                bottom:27px;
+            }
+
+            .notice p{
+                font-size:17px;
+                line-height:1.78;
+            }
+
+            .access{
+                margin:0 24px 28px;
+                padding-top:22px;
+                flex-direction:column;
+                align-items:flex-start;
+                gap:16px;
+            }
+
+            .button{
+                width:100%;
+            }
+
+            .footer{
+                padding:14px 24px 16px;
+                flex-direction:column;
+                align-items:flex-start;
+                gap:3px;
+            }
+
+            .footer-right{
+                white-space:normal;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <div class="panel">
+
+        <div class="topline"></div>
+
+        <header class="header">
+            <h1 class="title">KMGVIP</h1>
+            <div class="subtitle">
+                Kitaake Mutagenesis Genomic Variant Information Platform
+            </div>
+        </header>
+
+        <div class="divider"></div>
+
+        <section class="notice">
+            <div class="section-label">Platform Notice</div>
+
+            <p>
+                KMGVIP is currently available through a temporary access address because
+                the official institutional domain and related deployment procedures are
+                still being prepared.
+            </p>
+
+            <p>
+                This page serves as the persistent access page for KMGVIP. Once the
+                official institutional domain becomes available, the access link on this
+                page will be updated accordingly.
+            </p>
+        </section>
+
+        <section class="access">
+
+            <div class="access-copy">
+                <div class="access-eyebrow">Current Access</div>
+
+                <h2 class="access-title">
+                    Temporary platform access
+                </h2>
+
+                <div class="access-note">
+                    Please use this page as the persistent project entry point.
+                </div>
+            </div>
+
+            <a
+                class="button"
+                href="https://microbeam-genome-variant.kefan.work/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Visit KMGVIP →
+            </a>
+
+        </section>
+
+        <footer class="footer">
+            <div>Institute of Modern Physics, Chinese Academy of Sciences</div>
+            <div class="footer-right">Updated August 24, 2026</div>
+        </footer>
+
+    </div>
+
+</div>
+
+</body>
+</html>
